@@ -29,6 +29,7 @@ partial class ClientsListForm
     private void InitializeComponent()
     {
         clientsListBox = new ListBox();
+        addClientButton = new Button();
         SuspendLayout();
         // 
         // clientsListBox
@@ -36,15 +37,26 @@ partial class ClientsListForm
         clientsListBox.FormattingEnabled = true;
         clientsListBox.Location = new Point(12, 12);
         clientsListBox.Name = "clientsListBox";
-        clientsListBox.Size = new Size(265, 364);
+        clientsListBox.Size = new Size(265, 324);
         clientsListBox.TabIndex = 0;
         clientsListBox.DoubleClick += OnListBoxDoubleClick;
+        // 
+        // addClientButton
+        // 
+        addClientButton.Location = new Point(12, 347);
+        addClientButton.Name = "addClientButton";
+        addClientButton.Size = new Size(265, 29);
+        addClientButton.TabIndex = 1;
+        addClientButton.Text = "Add client";
+        addClientButton.UseVisualStyleBackColor = true;
+        addClientButton.Click += addClientButton_Click;
         // 
         // ClientsListForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(289, 388);
+        Controls.Add(addClientButton);
         Controls.Add(clientsListBox);
         Name = "ClientsListForm";
         Text = "Clients";
@@ -55,4 +67,5 @@ partial class ClientsListForm
     #endregion
 
     private ListBox clientsListBox;
+    private Button addClientButton;
 }

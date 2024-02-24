@@ -7,7 +7,7 @@ public partial class ClientsListForm : Form
     private IDatabase _database;
     public ClientsListForm()
     {
-        _database = new ListDatabase();
+        _database = new EntityFrameworkDatabase();
         InitializeComponent();
     }
 
@@ -19,10 +19,23 @@ public partial class ClientsListForm : Form
     public void OnListBoxDoubleClick(object sender, EventArgs e)
     {
         var selectedClient = clientsListBox.SelectedItem as Client;
-
+        int index = clientsListBox.SelectedIndex;
         if (selectedClient is null) return;
+        clientsListBox.Items.Remove(clientsListBox.SelectedItem);
 
-        var clientForm = new ClientForm(selectedClient, _database);
+        var clientForm = new ClientForm(selectedClient);
         clientForm.ShowDialog();
+        _database.SaveChanges();
+        clientsListBox.Items.Insert(index, selectedClient);
+    }
+
+    private void addClientButton_Click(object sender, EventArgs e)
+    {
+        var newClient = new Client();
+        var clientForm = new ClientForm(newClient);
+        clientForm.ShowDialog();
+        _database.AddClient(newClient);
+        _database.SaveChanges();
+        clientsListBox.Items.Add(newClient);
     }
 }

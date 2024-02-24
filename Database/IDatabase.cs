@@ -9,4 +9,7 @@ public interface IDatabase
     Client? GetClientById(Guid id);
 
     void UpdateClient(Client client);
+
+    void AddClient(Client client);
+    void SaveChanges();
 }

@@ -76,6 +76,7 @@
             balanceTextBox.Name = "balanceTextBox";
             balanceTextBox.Size = new Size(355, 27);
             balanceTextBox.TabIndex = 5;
+            balanceTextBox.TextChanged += balanceTextBox_TextChanged;
             // 
             // balanceLabel
             // 
@@ -104,6 +105,7 @@
             saveButton.TabIndex = 7;
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // ClientForm
             // 
