@@ -22,6 +22,7 @@ public partial class ClientsListForm : Form
         int index = clientsListBox.SelectedIndex;
         if (selectedClient is null) return;
         clientsListBox.Items.Remove(clientsListBox.SelectedItem);
+        MessageBox.Show(selectedClient.Id.ToString());
 
         var clientForm = new ClientForm(selectedClient);
         clientForm.ShowDialog();
@@ -34,6 +35,7 @@ public partial class ClientsListForm : Form
         var newClient = new Client();
         var clientForm = new ClientForm(newClient);
         clientForm.ShowDialog();
+        if (newClient.Name is null) return;
         _database.AddClient(newClient);
         _database.SaveChanges();
         clientsListBox.Items.Add(newClient);
